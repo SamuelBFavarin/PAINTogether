@@ -10,5 +10,19 @@ package painTogether.gui;
  * @author samuel
  */
 public class Renderer {
+
+    public Renderer() {
+        initMainForm();
+        
+    }
+    
+    public void initMainForm(){
+        new MainForm();
+    }
+    
+    public void initRooForm(){
+        
+    }
+       
     
 }

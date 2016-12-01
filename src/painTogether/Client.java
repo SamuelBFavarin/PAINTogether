@@ -1,5 +1,7 @@
 package painTogether;
 
+import painTogether.gui.Renderer;
+
 /**
  *
  * @author samuel
@@ -7,7 +9,7 @@ package painTogether;
 public class Client {
     
     public static void main(String[] args) {
-        
+        new Renderer();
     }
     
     
