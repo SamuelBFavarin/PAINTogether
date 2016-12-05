@@ -1,6 +1,5 @@
 package painTogether;
 
-
 /**
  *
  * @author samuel
