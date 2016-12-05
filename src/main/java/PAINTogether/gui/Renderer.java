@@ -3,12 +3,26 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package painTogether.gui;
+package PAINTogether.gui;
 
 /**
  *
  * @author samuel
  */
 public class Renderer {
+
+    public Renderer() {
+        initMainForm();
+        
+    }
+    
+    public void initMainForm(){
+        new MainForm();
+    }
+    
+    public void initRooForm(){
+        
+    }
+       
     
 }

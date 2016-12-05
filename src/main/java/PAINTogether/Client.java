@@ -1,4 +1,6 @@
-package painTogether;
+package PAINTogether;
+
+import PAINTogether.gui.Renderer;
 
 /**
  *
@@ -7,7 +9,7 @@ package painTogether;
 public class Client {
     
     public static void main(String[] args) {
-        
+        new Renderer();
     }
     
     
