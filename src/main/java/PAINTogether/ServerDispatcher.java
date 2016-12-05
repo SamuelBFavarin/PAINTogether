@@ -1,4 +1,4 @@
-package painTogether;
+package PAINTogether;
 
 /**
  *

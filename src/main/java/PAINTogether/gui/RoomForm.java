@@ -1,4 +1,4 @@
-package painTogether.gui;
+package PAINTogether.gui;
 
 /**
  *

@@ -1,6 +1,6 @@
-package painTogether;
+package PAINTogether;
 
-import painTogether.gui.Renderer;
+import PAINTogether.gui.Renderer;
 
 /**
  *

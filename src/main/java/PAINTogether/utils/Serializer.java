@@ -1,4 +1,4 @@
-package painTogether.utils;
+package PAINTogether.utils;
 
 import com.google.gson.Gson;
 
