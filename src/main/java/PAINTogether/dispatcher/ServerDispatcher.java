@@ -1,4 +1,4 @@
-package PAINTogether;
+package PAINTogether.dispatcher;
 
 /**
  *
