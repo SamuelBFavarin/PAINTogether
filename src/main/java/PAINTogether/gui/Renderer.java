@@ -12,17 +12,18 @@ package PAINTogether.gui;
 public class Renderer {
 
     public Renderer() {
-        initMainForm();
+        //initMainForm();
+        initRooForm();
         
     }
     
     public void initMainForm(){
         new MainForm();
     }
-    
-    public void initRooForm(){
-        
+
+    public void initRooForm() {
+        new RoomForm();
     }
-       
-    
+
+
 }
