@@ -56,6 +56,8 @@ public class RoomForm extends JFrame {
         JPanel leftPanel = new JPanel();
         leftPanel.setBackground(Color.DARK_GRAY);
 
+        //Rectangle rctRed = new Rectangle(0f,0f,20f,20f, Color.RED);
+
         return leftPanel;
 
     }
