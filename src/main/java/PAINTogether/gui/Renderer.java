@@ -5,6 +5,8 @@
  */
 package PAINTogether.gui;
 
+import PAINTogether.gui.room_form_class.RoomForm;
+
 /**
  *
  * @author samuel
