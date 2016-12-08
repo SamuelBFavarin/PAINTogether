@@ -26,4 +26,6 @@ public class ColorBox extends JPanel {
     private void initSize() {
         this.setMinimumSize(new Dimension(this.x, this.y));
     }
+
+
 }

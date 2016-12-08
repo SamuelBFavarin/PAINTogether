@@ -87,23 +87,39 @@ public class RoomForm extends JFrame {
         colorsPanel.add(boxGray);
         colorsPanel.add(boxBlack);
 
+        colorsPanel.setBorder(BorderFactory.createLineBorder(Color.black));
+
 
         //***********************************************************************//
 
         JPanel topPanel = new JPanel();
-        topPanel.setBackground(Color.darkGray);
+        topPanel.setLayout(new GridLayout(0, 1));
+        JPanel selectColor = new JPanel();
+        selectColor.setBackground(Color.GREEN);
+        selectColor.setBorder(BorderFactory.createLineBorder(Color.black));
 
+        topPanel.add(Box.createRigidArea(new Dimension(10, 20)));
+        topPanel.setBackground(Color.darkGray);
+        topPanel.add(selectColor);
         topPanel.add(Box.createRigidArea(new Dimension(20, 50)));
+
+        //***********************************************************************//
+
+
+        JPanel southPanel = new JPanel();
+        southPanel.setBackground(Color.darkGray);
+
+        southPanel.add(Box.createRigidArea(new Dimension(50, 350)));
 
         //***********************************************************************//
 
         leftPanel.add(colorsPanel, BorderLayout.CENTER);
         leftPanel.add(topPanel, BorderLayout.NORTH);
-        leftPanel.add(new ColorBox(Color.DARK_GRAY), BorderLayout.WEST);
-        leftPanel.add(new ColorBox(Color.DARK_GRAY), BorderLayout.EAST);
-        leftPanel.add(new ColorBox(Color.DARK_GRAY), BorderLayout.SOUTH);
+        leftPanel.add(southPanel, BorderLayout.SOUTH);
 
         leftPanel.setBackground(Color.DARK_GRAY);
+        leftPanel.setBorder(BorderFactory.createLineBorder(Color.darkGray));
+
 
         return leftPanel;
 
