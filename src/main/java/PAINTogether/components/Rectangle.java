@@ -1,19 +1,19 @@
-package PAINTogether.Components;
+package PAINTogether.components;
 
-import java.awt.*;
+import java.awt.Color;
 
 /**
  * Created by samuel on 07/12/16.
  */
 public class Rectangle {
 
-    private final float x;
-    private final float y;
-    private final float width;
-    private final float height;
+    private final int x;
+    private final int y;
+    private final int width;
+    private final int height;
     private final Color color;
 
-    public Rectangle(float x, float y, float width, float height, Color color) {
+    public Rectangle(int x, int y, int width, int height, Color color) {
         this.x = x;
         this.y = y;
         this.width = width;

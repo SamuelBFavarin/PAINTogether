@@ -1,9 +1,9 @@
 package PAINTogether.gui;
 
-import PAINTogether.Components.DrawAdaptor;
-import PAINTogether.Components.Image;
-import PAINTogether.Components.Rectangle;
-import PAINTogether.Components.Triangle;
+import PAINTogether.components.DrawAdaptor;
+import PAINTogether.components.Image;
+import PAINTogether.components.Rectangle;
+import PAINTogether.components.Triangle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,6 +19,11 @@ public class Draw implements DrawAdaptor {
     private Graphics graphics;
     private JPanel panel;
 
+    public Draw(JPanel panel) {
+        this.panel = panel;
+        this.graphics = panel.getGraphics();
+    }
+
     private float getWidth() {
         return panel.getWidth();
     }
@@ -33,6 +38,15 @@ public class Draw implements DrawAdaptor {
 
     public void setGraphics(Graphics graphics) {
         this.graphics = graphics;
+    }
+
+    private void setColor(PAINTogether.components.Color color) {
+        graphics.setColor(new Color(
+                color.getR(),
+                color.getG(),
+                color.getB(),
+                color.getA()
+        ));
     }
 
     public void drawRectangle(Rectangle rectangle) {
