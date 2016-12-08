@@ -63,23 +63,15 @@ public class Draw implements DrawAdaptor {
     }
 
     public void drawImage(Image image) {
-        graphics.setColor(image.getRectangle().getColor());
-        graphics.drawImage(
-                loadImage(image),
-                (int) (image.getRectangle().getX() * getWidth()),
-                (int) (image.getRectangle().getY() * getHeight()),
-                (int) (image.getRectangle().getWidth() * getWidth()),
-                (int) (image.getRectangle().getHeight() * getHeight()),
-                panel);
-
+        //NAO IMPLEMENTADO
     }
 
-    private java.awt.Image loadImage(Image image) {
+    /*private java.awt.Image loadImage(Image image) {
         java.awt.Image loadedImage = images.get(image);
         if (loadedImage == null) {
             loadedImage = new ImageIcon(getClass().getResource(image.getFilename())).getImage();
             images.put(image, loadedImage);
         }
         return loadedImage;
-    }
+    }*/
 }
