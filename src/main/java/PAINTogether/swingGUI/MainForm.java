@@ -1,4 +1,4 @@
-package PAINTogether.gui;
+package PAINTogether.swingGUI;
 
 import javax.swing.*;
 import java.awt.*;

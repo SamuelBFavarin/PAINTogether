@@ -1,8 +1,7 @@
-package PAINTogether.gui.room_form_class;
+package PAINTogether.swingGUI.room_form_class;
 
 import PAINTogether.components.Image;
 import PAINTogether.components.Rectangle;
-import PAINTogether.gui.ColorBox;
 
 import javax.swing.*;
 import java.awt.*;

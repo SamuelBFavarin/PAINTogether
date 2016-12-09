@@ -1,4 +1,4 @@
-package PAINTogether.gui;
+package PAINTogether.swingGUI.room_form_class;
 
 import javax.swing.*;
 import java.awt.*;

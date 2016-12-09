@@ -1,11 +1,11 @@
 package PAINTogether.components;
 
-import java.awt.Color;
+import java.awt.*;
 
 /**
  * Created by samuel on 07/12/16.
  */
-public class Rectangle {
+public class Rectangle implements Components {
 
     private final int x;
     private final int y;
@@ -39,5 +39,10 @@ public class Rectangle {
 
     public float getY() {
         return y;
+    }
+
+    @Override
+    public String typeComponent() {
+        return "Rectangle";
     }
 }

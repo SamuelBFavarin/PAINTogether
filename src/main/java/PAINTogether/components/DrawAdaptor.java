@@ -7,7 +7,7 @@ public interface DrawAdaptor {
 
     public void drawRectangle(Rectangle rectangle);
 
-    public void drawTriangle(Triangle triangle);
+    public void drawCircle(Circle circle);
 
     public void drawImage(Image image);
 

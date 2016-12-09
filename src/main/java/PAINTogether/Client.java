@@ -1,6 +1,6 @@
 package PAINTogether;
 
-import PAINTogether.gui.Renderer;
+import PAINTogether.swingGUI.Renderer;
 
 import javax.swing.*;
 
