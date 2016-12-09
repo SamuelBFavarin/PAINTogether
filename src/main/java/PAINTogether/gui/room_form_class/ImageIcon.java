@@ -1,7 +1,5 @@
 package PAINTogether.gui.room_form_class;
 
-import PAINTogether.components.Image;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -9,27 +7,28 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
+
 /**
  * Created by samuel on 08/12/16.
  */
 public class ImageIcon extends JPanel {
 
-    private final String imgName;
-    private BufferedImage image;
+    private final String urlImage;
 
-    public ImageIcon(Image img) {
-        this.imgName = img.getFilename();
-        try {
-            this.image = ImageIO.read(new File(this.imgName));
-        } catch (IOException e) {
-            System.out.println(e.fillInStackTrace());
-        }
+    public ImageIcon(PAINTogether.components.Image image) {
+        this.urlImage = image.getFilename();
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
+        File filename = new File(urlImage);
         super.paintComponent(g);
-        g.drawImage(this.image, 0, 0, this);
-    }
 
+        try {
+            BufferedImage image = ImageIO.read(new File(String.valueOf(filename)));
+            g.drawImage(image, 0, 0, 50, 50, this);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

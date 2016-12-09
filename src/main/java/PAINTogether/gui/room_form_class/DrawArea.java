@@ -1,5 +1,6 @@
 package PAINTogether.gui.room_form_class;
 
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,7 +10,9 @@ import java.awt.*;
 public class DrawArea extends JPanel {
 
     public DrawArea() {
-        this.setBackground(Color.white);
+
+        this.setLayout(new BorderLayout());
+        this.setBackground(Color.WHITE);
         this.setBorder(BorderFactory.createLineBorder(Color.darkGray));
     }
 }

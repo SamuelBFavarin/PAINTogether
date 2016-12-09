@@ -1,6 +1,7 @@
 package PAINTogether.gui.room_form_class;
 
 import PAINTogether.components.Image;
+import PAINTogether.components.Rectangle;
 import PAINTogether.gui.ColorBox;
 
 import javax.swing.*;
@@ -72,13 +73,18 @@ public class LeftBar extends JPanel {
     private JPanel initSouthArea() {
         JPanel southPanel = new JPanel();
         southPanel.setBackground(Color.darkGray);
+        southPanel.setLayout(new GridLayout(0, 1));
 
-        Image brushImg = new Image("design.png");
-        ImageIcon brushIcon = new ImageIcon(brushImg);
+        ImageIcon brushImg = new ImageIcon(new Image("newbrush.png", new Rectangle(0, 0, 0, 0, Color.BLUE)));
+        brushImg.setBorder(BorderFactory.createLineBorder(Color.WHITE));
+        ImageIcon ereserImg = new ImageIcon(new Image("ereser.png", new Rectangle(0, 0, 0, 0, Color.BLUE)));
+        ereserImg.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
-
-        southPanel.add(brushIcon);
-        southPanel.add(Box.createRigidArea(new Dimension(50, 350)));
+        southPanel.add(Box.createRigidArea(new Dimension(50, 50)));
+        southPanel.add(brushImg);
+        southPanel.add(Box.createRigidArea(new Dimension(10, 10)));
+        southPanel.add(ereserImg);
+        southPanel.add(Box.createRigidArea(new Dimension(50, 50)));
         return southPanel;
 
     }

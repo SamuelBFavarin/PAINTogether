@@ -5,13 +5,20 @@ package PAINTogether.components;
  */
 public class Image {
     private final String filename;
+    private final Rectangle rectangle;
 
-    public Image(String filename) {
+    public Image(String filename, Rectangle rectangle) {
+
         this.filename = filename;
+        this.rectangle = rectangle;
     }
 
     public String getFilename() {
         return this.filename;
+    }
+
+    public Rectangle getRectangle() {
+        return this.rectangle;
     }
 
 }
