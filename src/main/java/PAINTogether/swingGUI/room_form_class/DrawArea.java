@@ -5,6 +5,7 @@ import PAINTogether.components.Component;
 import PAINTogether.components.Image;
 import PAINTogether.components.Rectangle;
 import PAINTogether.draw.DrawImage;
+import PAINTogether.draw.DrawRectangle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -23,12 +24,12 @@ public class DrawArea extends JPanel {
         DrawImage drawImg = new DrawImage();
         drawImg.draw(img);
 
-        /*Component rct = new Rectangle(60,60,78,96,Color.BLUE);
+        Component rct = new Rectangle(60, 60, 50, 50, Color.BLUE);
         DrawRectangle drawRectangle = new DrawRectangle();
-        drawRectangle.draw(rct);*/
+        drawRectangle.draw(rct);
 
         this.add(drawImg);
-        //this.add(drawRectangle);
+        this.add(drawRectangle);
         this.repaint();
         this.setBackground(Color.WHITE);
         this.setBorder(BorderFactory.createLineBorder(Color.darkGray));

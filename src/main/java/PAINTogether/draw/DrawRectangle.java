@@ -15,17 +15,17 @@ public class DrawRectangle extends DrawComponent {
 
     @Override
     public void draw(Component component) {
-        this.rectangle = (Rectangle) rectangle;
+        this.rectangle = (Rectangle) component;
     }
 
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(rectangle.getColor());
-        g.drawRect(
-                (int) rectangle.getX(),
+        g.fillRect((int) rectangle.getX(),
                 (int) rectangle.getY(),
                 (int) rectangle.getWidth(),
                 (int) rectangle.getHeight());
+        super.repaint();
     }
 }
