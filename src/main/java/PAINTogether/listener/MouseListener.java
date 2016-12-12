@@ -26,9 +26,9 @@ public class MouseListener extends MouseAdapter {
     }
 
     private void mouseDown(MouseEvent e) {
-        if (SwingUtilities.isLeftMouseButton(e))
+        if (SwingUtilities.isLeftMouseButton(e) && !SwingUtilities.isRightMouseButton(e))
             Drawer.getInstance().drawBrush(e.getX(), e.getY(), false);
-        else if (SwingUtilities.isRightMouseButton(e))
+        else if (SwingUtilities.isRightMouseButton(e) && !SwingUtilities.isLeftMouseButton(e))
             Drawer.getInstance().drawBrush(e.getX(), e.getY(), true);
     }
 
