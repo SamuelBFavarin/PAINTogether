@@ -1,22 +1,29 @@
 package PAINTogether.swingGUI.room_form_class;
 
+import PAINTogether.components.Brush;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 
 /**
  * Created by samuel on 08/12/16.
  */
 public class ColorBox extends JPanel {
+    private final int x = 20;
+    private final int y = 20;
 
-    private static final int x = 20;
-    private static final int y = 20;
-    private final Color color;
-
-    public ColorBox(Color color) {
-        this.color = color;
+    public ColorBox(final Color color) {
         initColor(color);
         initSize();
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                Brush.getInstance().setColor(color);
+            }
+        });
     }
 
     private void initColor(Color color) {

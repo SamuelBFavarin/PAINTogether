@@ -5,19 +5,27 @@ package PAINTogether.components;
  */
 public class Point {
 
-    private final float x;
-    private final float y;
+    private int x;
+    private int y;
 
-    public Point(float x, float y) {
+    public Point(int x, int y) {
         this.x = x;
         this.y = y;
     }
 
-    public float getY() {
+    public int getY() {
         return y;
     }
 
-    public float getX() {
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public int getX() {
         return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
     }
 }
