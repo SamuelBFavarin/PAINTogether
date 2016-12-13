@@ -1,5 +1,7 @@
 package PAINTogether.swingGUI.room_form_class;
 
+import PAINTogether.listener.ButtonClearListener;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,12 +11,25 @@ import java.awt.*;
 public class TopBar extends JPanel {
 
     public TopBar() {
+
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
 
+        JPanel btnPanel = new JPanel();
+        btnPanel.setLayout(new BoxLayout(btnPanel, 2));
+        btnPanel.setBackground(Color.DARK_GRAY);
+
+        JButton btnClear = new JButton("Clear Project"); //CLEAR BUTTON
         JButton btnExit = new JButton("Close Project"); //EXIT BUTTON
+
+        btnPanel.add(btnClear);
+        btnPanel.add(btnExit);
+
+
+        new ButtonClearListener(btnClear);
+
         this.add(initTextInformation(), BorderLayout.WEST);
-        this.add(btnExit, BorderLayout.EAST);
+        this.add(btnPanel, BorderLayout.EAST);
 
     }
 
