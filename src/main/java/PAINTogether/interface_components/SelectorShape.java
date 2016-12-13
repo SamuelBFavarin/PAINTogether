@@ -1,9 +1,7 @@
 package PAINTogether.interface_components;
 
 import PAINTogether.components.Brush;
-import PAINTogether.components.Circle;
 import PAINTogether.components.ComponentFactory;
-import PAINTogether.components.Rectangle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -16,29 +14,48 @@ import java.awt.event.MouseEvent;
 public class SelectorShape extends JPanel {
 
 
-    private int shape = 0; //0 -> rectangle 1-> circle
-    private Color color = Color.green;
+    private static SelectorShape instance;
+    private int shape = 1; //0 -> rectangle 1-> circle
+    private Color color = Color.black;
+    private boolean newColor;
 
     public SelectorShape() {
-        //this.setBackground(Color.DARK_GRAY);
-        if (shape == 0) {
-            new Rectangle(0, 0, 20, 20, this.color);
-        } else {
-            new Circle(0, 0, 20, 20, this.color);
-        }
-
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                System.out.println(getColor());
                 if (shape == 1) {
                     Brush.getInstance().setShape(ComponentFactory.ComponentType.RECTANGLE);
-                    shape = 0;
-                } else {
+                    System.out.println(shape);
+                    shape--;
+                } else if (shape == 0) {
                     Brush.getInstance().setShape(ComponentFactory.ComponentType.CIRCLE);
-                    shape = 1;
+                    System.out.println(shape);
+                    shape++;
                 }
             }
         });
+
+    }
+
+    public static SelectorShape getInstance() {
+        if (instance == null)
+            instance = new SelectorShape();
+
+        return instance;
+    }
+
+    @Override
+    public void paintComponent(Graphics g) {
+        g.clearRect(0, 0, 40, 40);
+        g.setColor(this.getColor());
+        this.repaint();
+        if (shape == 0) {
+            g.fillRect(0, 0, 40, 40);
+        } else if (shape == 1) {
+            g.fillOval(0, 0, 40, 40);
+        }
+
     }
 
     public Color getColor() {
@@ -47,5 +64,6 @@ public class SelectorShape extends JPanel {
 
     public void setColor(Color color) {
         this.color = color;
+        this.repaint();
     }
 }

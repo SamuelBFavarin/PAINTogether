@@ -22,6 +22,7 @@ public class ColorBox extends JPanel {
             @Override
             public void mousePressed(MouseEvent e) {
                 Brush.getInstance().setColor(color);
+                SelectorShape.getInstance().setColor(color);
             }
         });
     }

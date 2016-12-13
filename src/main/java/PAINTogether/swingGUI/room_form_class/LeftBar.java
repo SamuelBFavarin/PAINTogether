@@ -59,15 +59,9 @@ public class LeftBar extends JPanel {
     private JPanel initReferenceColor() {
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new GridLayout(0, 1));
-        /*JPanel selectColor = new JPanel();
-        selectColor.setBackground(Color.GREEN);
-        selectColor.setBorder(BorderFactory.createLineBorder(Color.black));
-
-        topPanel.add(Box.createRigidArea(new Dimension(10, 20)));
-        topPanel.setBackground(Color.darkGray);
-        topPanel.add(selectColor);*/
         topPanel.add(new SelectorShape());
-        topPanel.add(Box.createRigidArea(new Dimension(20, 50)));
+        topPanel.add(Box.createRigidArea(new Dimension(0, 40)));
+        this.setBackground(Color.darkGray);
         return topPanel;
     }
 
