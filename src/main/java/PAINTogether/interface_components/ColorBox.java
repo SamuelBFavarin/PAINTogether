@@ -1,4 +1,4 @@
-package PAINTogether.swingGUI.room_form_class;
+package PAINTogether.interface_components;
 
 import PAINTogether.components.Brush;
 

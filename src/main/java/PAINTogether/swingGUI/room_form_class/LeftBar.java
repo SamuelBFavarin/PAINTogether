@@ -1,5 +1,9 @@
 package PAINTogether.swingGUI.room_form_class;
 
+import PAINTogether.interface_components.ColorBox;
+import PAINTogether.interface_components.SelectorShape;
+import PAINTogether.interface_components.SliderSize;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -55,13 +59,14 @@ public class LeftBar extends JPanel {
     private JPanel initReferenceColor() {
         JPanel topPanel = new JPanel();
         topPanel.setLayout(new GridLayout(0, 1));
-        JPanel selectColor = new JPanel();
+        /*JPanel selectColor = new JPanel();
         selectColor.setBackground(Color.GREEN);
         selectColor.setBorder(BorderFactory.createLineBorder(Color.black));
 
         topPanel.add(Box.createRigidArea(new Dimension(10, 20)));
         topPanel.setBackground(Color.darkGray);
-        topPanel.add(selectColor);
+        topPanel.add(selectColor);*/
+        topPanel.add(new SelectorShape());
         topPanel.add(Box.createRigidArea(new Dimension(20, 50)));
         return topPanel;
     }
@@ -71,16 +76,9 @@ public class LeftBar extends JPanel {
         southPanel.setBackground(Color.darkGray);
         southPanel.setLayout(new GridLayout(0, 1));
 
-        // ImageIcon brushImg = new ImageIcon(new Image("newbrush.png", new Rectangle(0, 0, 0, 0, Color.BLUE)));
-        // brushImg.setBorder(BorderFactory.createLineBorder(Color.WHITE));
-        // ImageIcon ereserImg = new ImageIcon(new Image("ereser.png", new Rectangle(0, 0, 0, 0, Color.BLUE)));
-        // ereserImg.setBorder(BorderFactory.createLineBorder(Color.WHITE));
 
-        southPanel.add(Box.createRigidArea(new Dimension(50, 50)));
-        //  southPanel.add(brushImg);
-        southPanel.add(Box.createRigidArea(new Dimension(10, 10)));
-        //   southPanel.add(ereserImg);
-        southPanel.add(Box.createRigidArea(new Dimension(50, 50)));
+        southPanel.add(new SliderSize());
+        //southPanel.add(Box.createRigidArea(new Dimension(50, 50)));
         return southPanel;
 
     }

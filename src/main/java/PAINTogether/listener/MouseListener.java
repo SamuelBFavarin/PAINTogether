@@ -35,14 +35,12 @@ public class MouseListener extends MouseAdapter {
     @Override
     public void mousePressed(MouseEvent e) {
         mouseDown(e);
-
         drawArea.repaint();
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
         mouseDown(e);
-
         drawArea.repaint();
     }
 
