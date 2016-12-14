@@ -22,7 +22,7 @@ public class SliderSize extends JSlider {
         this.setOrientation(JSlider.VERTICAL);
         addMouseListener(new MouseAdapter() {
             @Override
-            public void mousePressed(MouseEvent e) {
+            public void mouseReleased(MouseEvent e) {
                 Brush.getInstance().setSize(new Size(SliderSize.super.getValue(), SliderSize.super.getValue()));
             }
         });

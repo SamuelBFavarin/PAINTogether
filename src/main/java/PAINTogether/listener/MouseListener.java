@@ -8,7 +8,7 @@ package PAINTogether.listener;
 import PAINTogether.components.Drawer;
 import PAINTogether.dispatcher.ServerDispatcher;
 import PAINTogether.swingGUI.room_form_class.DrawArea;
-import PAINTogether.utils.Configuracoes;
+import PAINTogether.utils.Settings;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -48,7 +48,7 @@ public class MouseListener extends MouseAdapter {
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if (Configuracoes.getInstance().isOnline())
+        if (Settings.getInstance().isOnline())
             ServerDispatcher.getInstance().dispatch();
     }
 

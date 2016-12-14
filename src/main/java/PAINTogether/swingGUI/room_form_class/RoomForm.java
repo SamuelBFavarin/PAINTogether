@@ -25,6 +25,7 @@ public class RoomForm extends JFrame {
 
         new MouseListener(drawArea);
 
+
         this.setVisible(true);
     }
 

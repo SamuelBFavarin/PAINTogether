@@ -3,16 +3,16 @@ package PAINTogether.utils;
 /**
  * Created by Lucas Baragatti on 14/12/2016.
  */
-public class Configuracoes {
-    private static Configuracoes instance;
+public class Settings {
+    private static Settings instance;
     private boolean online = true;
 
-    private Configuracoes() {
+    private Settings() {
     }
 
-    public static Configuracoes getInstance() {
+    public static Settings getInstance() {
         if (instance == null)
-            instance = new Configuracoes();
+            instance = new Settings();
 
         return instance;
     }

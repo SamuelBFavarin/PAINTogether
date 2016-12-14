@@ -1,7 +1,7 @@
 package PAINTogether.components;
 
 import PAINTogether.dispatcher.ServerDispatcher;
-import PAINTogether.utils.Configuracoes;
+import PAINTogether.utils.Settings;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -32,7 +32,7 @@ public class Drawer {
 
         components.add(c);
 
-        if (Configuracoes.getInstance().isOnline())
+        if (Settings.getInstance().isOnline())
             ServerDispatcher.getInstance().addComponent(c);
     }
 

@@ -2,6 +2,7 @@ package PAINTogether.swingGUI.room_form_class;
 
 import PAINTogether.components.Drawer;
 import PAINTogether.listener.SimpleMouseListener;
+import PAINTogether.utils.Settings;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +12,7 @@ import java.awt.event.MouseEvent;
  * Created by samuel on 08/12/16.
  */
 public class TopBar extends JPanel {
+
 
     public TopBar() {
 
@@ -27,20 +29,36 @@ public class TopBar extends JPanel {
         btnPanel.add(btnClear);
         btnPanel.add(btnExit);
 
-        SimpleMouseListener mouseListener = new SimpleMouseListener(btnClear);
-        mouseListener.setMousePressHandler(new SimpleMouseListener.MousePressEvent() {
+        //CLEAR BUTTON EVENT
+        SimpleMouseListener btnClearListener = new SimpleMouseListener(btnClear);
+        btnClearListener.setMousePressHandler(new SimpleMouseListener.MousePressEvent() {
             @Override
             public void onMousePress(MouseEvent e) {
                 Drawer.getInstance().clear();
             }
         });
 
-        this.add(initTextInformation(), BorderLayout.WEST);
+        //CLOSE BUTTON EVENT
+        SimpleMouseListener btnCloseListener = new SimpleMouseListener(btnExit);
+        btnCloseListener.setMousePressHandler(new SimpleMouseListener.MousePressEvent() {
+            @Override
+            public void onMousePress(MouseEvent e) {
+                // RoomForm.super.dispose();
+                System.out.println("test");
+            }
+        });
+
+        //TOP TEXT ONLINE E OFFLINE MODE//
+        if (Settings.getInstance().isOnline())
+            this.add(initTextInformationOnline(), BorderLayout.WEST);
+        else
+            this.add(initTextInformationOffline(), BorderLayout.WEST);
+
         this.add(btnPanel, BorderLayout.EAST);
 
     }
 
-    private JPanel initTextInformation() {
+    private JPanel initTextInformationOnline() {
         JPanel txtPanel = new JPanel();
         txtPanel.setBackground(Color.DARK_GRAY);
 
@@ -61,4 +79,17 @@ public class TopBar extends JPanel {
 
         return txtPanel;
     }
+
+    private JPanel initTextInformationOffline() {
+        JPanel txtPanel = new JPanel();
+        txtPanel.setBackground(Color.DARK_GRAY);
+
+        JLabel txtMessage = new JLabel("Offline Poject");
+
+        txtMessage.setForeground(Color.cyan);
+        txtPanel.add(txtMessage);
+
+        return txtPanel;
+    }
+
 }

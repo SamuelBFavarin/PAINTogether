@@ -15,6 +15,7 @@ public class SelectorShape extends JPanel {
     private static SelectorShape instance;
 
     public SelectorShape() {
+        this.setBackground(Color.darkGray);
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {

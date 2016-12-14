@@ -13,17 +13,17 @@ import PAINTogether.swingGUI.room_form_class.RoomForm;
 public class Renderer {
 
     public Renderer() {
-        //initMainForm();
-        initRooForm();
+        initMainForm();
+        //initRoomForm();
     }
 
     public void initMainForm() {
         new MainForm();
+
     }
 
-    public void initRooForm() {
+    public void initRoomForm() {
         new RoomForm();
     }
-
 
 }
