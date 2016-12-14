@@ -6,7 +6,9 @@
 package PAINTogether.listener;
 
 import PAINTogether.components.Drawer;
+import PAINTogether.dispatcher.ServerDispatcher;
 import PAINTogether.swingGUI.room_form_class.DrawArea;
+import PAINTogether.utils.Configuracoes;
 
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
@@ -42,6 +44,12 @@ public class MouseListener extends MouseAdapter {
     public void mouseDragged(MouseEvent e) {
         mouseDown(e);
         drawArea.repaint();
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        if (Configuracoes.getInstance().isOnline())
+            ServerDispatcher.getInstance().dispatch();
     }
 
 }

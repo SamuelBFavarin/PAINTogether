@@ -8,7 +8,6 @@ package PAINTogether.swingGUI;
 import PAINTogether.swingGUI.room_form_class.RoomForm;
 
 /**
- *
  * @author samuel
  */
 public class Renderer {
@@ -17,8 +16,8 @@ public class Renderer {
         //initMainForm();
         initRooForm();
     }
-    
-    public void initMainForm(){
+
+    public void initMainForm() {
         new MainForm();
     }
 

@@ -1,5 +1,8 @@
 package PAINTogether.components;
 
+import PAINTogether.dispatcher.ServerDispatcher;
+import PAINTogether.utils.Configuracoes;
+
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -28,6 +31,9 @@ public class Drawer {
                 size.getHeight(), color);
 
         components.add(c);
+
+        if (Configuracoes.getInstance().isOnline())
+            ServerDispatcher.getInstance().addComponent(c);
     }
 
     public void draw(Graphics g) {
