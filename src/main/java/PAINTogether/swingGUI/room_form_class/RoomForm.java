@@ -19,7 +19,7 @@ public class RoomForm extends JFrame {
         this.setLayout(new BorderLayout());
 
         DrawArea drawArea = new DrawArea();
-        TopBar topbar = new TopBar(this);
+        TopBar topbar = new TopBar();
 
         this.add(topbar, BorderLayout.NORTH);
         this.add(new LeftBar(), BorderLayout.WEST);
@@ -27,8 +27,7 @@ public class RoomForm extends JFrame {
 
         new DrawMouseListener(drawArea);
 
-
-
+        
         this.setVisible(true);
     }
 
