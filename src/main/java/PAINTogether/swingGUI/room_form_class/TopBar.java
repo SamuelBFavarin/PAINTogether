@@ -1,9 +1,11 @@
 package PAINTogether.swingGUI.room_form_class;
 
-import PAINTogether.listener.ButtonClearListener;
+import PAINTogether.components.Drawer;
+import PAINTogether.listener.SimpleMouseListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 /**
  * Created by samuel on 08/12/16.
@@ -25,8 +27,13 @@ public class TopBar extends JPanel {
         btnPanel.add(btnClear);
         btnPanel.add(btnExit);
 
-
-        new ButtonClearListener(btnClear);
+        SimpleMouseListener mouseListener = new SimpleMouseListener(btnClear);
+        mouseListener.setMousePressHandler(new SimpleMouseListener.MousePressEvent() {
+            @Override
+            public void onMousePress(MouseEvent e) {
+                Drawer.getInstance().clear();
+            }
+        });
 
         this.add(initTextInformation(), BorderLayout.WEST);
         this.add(btnPanel, BorderLayout.EAST);
