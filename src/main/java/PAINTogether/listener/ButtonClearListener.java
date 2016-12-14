@@ -1,5 +1,7 @@
 package PAINTogether.listener;
 
+import PAINTogether.components.Drawer;
+
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -9,14 +11,12 @@ import java.awt.event.MouseEvent;
  */
 public class ButtonClearListener extends MouseAdapter {
 
-    private final JButton btn;
-
     public ButtonClearListener(JButton btn) {
-        this.btn = btn;
+        btn.addMouseListener(this);
     }
     
     @Override
     public void mousePressed(MouseEvent e) {
-        System.out.println("teste");
+        Drawer.getInstance().clear();
     }
 }

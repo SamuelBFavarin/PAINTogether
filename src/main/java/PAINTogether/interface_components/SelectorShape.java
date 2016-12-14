@@ -1,7 +1,7 @@
 package PAINTogether.interface_components;
 
 import PAINTogether.components.Brush;
-import PAINTogether.components.ComponentFactory;
+import PAINTogether.components.ComponentFactory.ComponentType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,27 +12,21 @@ import java.awt.event.MouseEvent;
  * Created by samuel on 13/12/16.
  */
 public class SelectorShape extends JPanel {
-
-
     private static SelectorShape instance;
-    private int shape = 1; //0 -> rectangle 1-> circle
-    private Color color = Color.black;
-    private boolean newColor;
 
     public SelectorShape() {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                System.out.println(getColor());
-                if (shape == 1) {
-                    Brush.getInstance().setShape(ComponentFactory.ComponentType.RECTANGLE);
-                    System.out.println(shape);
-                    shape--;
-                } else if (shape == 0) {
-                    Brush.getInstance().setShape(ComponentFactory.ComponentType.CIRCLE);
-                    System.out.println(shape);
-                    shape++;
+                switch (Brush.getInstance().getShape()) {
+                    case RECTANGLE:
+                        Brush.getInstance().setShape(ComponentType.CIRCLE);
+                        break;
+                    case CIRCLE:
+                        Brush.getInstance().setShape(ComponentType.RECTANGLE);
+                        break;
                 }
+                repaint();
             }
         });
 
@@ -47,23 +41,20 @@ public class SelectorShape extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
         g.clearRect(0, 0, 40, 40);
-        g.setColor(this.getColor());
-        this.repaint();
-        if (shape == 0) {
-            g.fillRect(0, 0, 40, 40);
-        } else if (shape == 1) {
-            g.fillOval(0, 0, 40, 40);
+        g.setColor(Brush.getInstance().getColor());
+
+        switch (Brush.getInstance().getShape()) {
+            case RECTANGLE:
+                g.fillRect(0, 0, 40, 40);
+                break;
+            case CIRCLE:
+                g.fillOval(0, 0, 40, 40);
+                break;
         }
 
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color color) {
-        this.color = color;
         this.repaint();
     }
 }

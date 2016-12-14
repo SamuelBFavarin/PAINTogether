@@ -16,7 +16,6 @@ public class Renderer {
     public Renderer() {
         //initMainForm();
         initRooForm();
-        
     }
     
     public void initMainForm(){
