@@ -1,6 +1,6 @@
 package PAINTogether.swingGUI.room_form_class;
 
-import PAINTogether.listener.MouseListener;
+import PAINTogether.listener.DrawMouseListener;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +11,7 @@ import java.awt.*;
 public class RoomForm extends JFrame {
 
     public RoomForm() {
+
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -18,16 +19,17 @@ public class RoomForm extends JFrame {
         this.setLayout(new BorderLayout());
 
         DrawArea drawArea = new DrawArea();
+        TopBar topbar = new TopBar(this);
 
-        this.add(new TopBar(), BorderLayout.NORTH);
+        this.add(topbar, BorderLayout.NORTH);
         this.add(new LeftBar(), BorderLayout.WEST);
         this.add(drawArea, BorderLayout.CENTER);
 
-        new MouseListener(drawArea);
+        new DrawMouseListener(drawArea);
+
 
 
         this.setVisible(true);
     }
-
 
 }

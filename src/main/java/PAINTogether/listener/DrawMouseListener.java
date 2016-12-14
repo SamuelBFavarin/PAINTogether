@@ -17,10 +17,10 @@ import java.awt.event.MouseEvent;
 /**
  * @author samuel
  */
-public class MouseListener extends MouseAdapter {
+public class DrawMouseListener extends MouseAdapter {
     private DrawArea drawArea;
 
-    public MouseListener(DrawArea drawArea) {
+    public DrawMouseListener(DrawArea drawArea) {
         this.drawArea = drawArea;
 
         drawArea.addMouseListener(this);

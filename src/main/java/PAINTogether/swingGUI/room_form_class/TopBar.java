@@ -35,6 +35,7 @@ public class TopBar extends JPanel {
             @Override
             public void onMousePress(MouseEvent e) {
                 Drawer.getInstance().clear();
+                System.out.println("CLEAR");
             }
         });
 
@@ -43,8 +44,9 @@ public class TopBar extends JPanel {
         btnCloseListener.setMousePressHandler(new SimpleMouseListener.MousePressEvent() {
             @Override
             public void onMousePress(MouseEvent e) {
-                // RoomForm.super.dispose();
-                System.out.println("test");
+                //RoomForm.super.dispose();
+
+                System.out.println("FECHAR TELA");
             }
         });
 
@@ -91,5 +93,6 @@ public class TopBar extends JPanel {
 
         return txtPanel;
     }
+
 
 }
