@@ -2,6 +2,7 @@ package PAINTogether.swingGUI.room_form_class;
 
 import PAINTogether.components.Drawer;
 import PAINTogether.listener.SimpleMouseListener;
+import PAINTogether.utils.FormManager;
 import PAINTogether.utils.Settings;
 
 import javax.swing.*;
@@ -44,9 +45,9 @@ public class TopBar extends JPanel {
         btnCloseListener.setMousePressHandler(new SimpleMouseListener.MousePressEvent() {
             @Override
             public void onMousePress(MouseEvent e) {
-                //RoomForm.super.dispose();
-
                 System.out.println("FECHAR TELA");
+
+                FormManager.getInstance().closeCurrentForm();
             }
         });
 

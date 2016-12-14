@@ -1,6 +1,7 @@
 package PAINTogether.swingGUI;
 
 import PAINTogether.listener.SimpleMouseListener;
+import PAINTogether.utils.FormManager;
 import PAINTogether.utils.Settings;
 
 import javax.swing.*;
@@ -86,8 +87,7 @@ public class MainForm extends JFrame {
             @Override
             public void onMousePress(MouseEvent e) {
                 Settings.getInstance().setOnline(true);
-                new Renderer(Renderer.Form.ROOM_FORM);
-                MainForm.super.dispose();
+                FormManager.getInstance().openForm(FormManager.FormType.ROOM_FORM);
             }
         });
 
@@ -109,8 +109,7 @@ public class MainForm extends JFrame {
             @Override
             public void onMousePress(MouseEvent e) {
                 Settings.getInstance().setOnline(false);
-                new Renderer(Renderer.Form.ROOM_FORM);
-                MainForm.super.dispose();
+                FormManager.getInstance().openForm(FormManager.FormType.ROOM_FORM);
             }
         });
 

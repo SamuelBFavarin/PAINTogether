@@ -1,6 +1,6 @@
 package PAINTogether;
 
-import PAINTogether.swingGUI.Renderer;
+import PAINTogether.utils.FormManager;
 
 import javax.swing.*;
 
@@ -16,7 +16,9 @@ public class Client {
         } catch (Exception e) {
         }
 
-        new Renderer(Renderer.Form.MAIN_FORM);
+        FormManager.getInstance().openForm(FormManager.FormType.MAIN_FORM);
+
+        //new Renderer(Renderer.Form.MAIN_FORM);
     }
     
 }

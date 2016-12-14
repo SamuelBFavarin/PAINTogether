@@ -2,11 +2,15 @@ package PAINTogether.interface_components;
 
 import PAINTogether.components.Brush;
 import PAINTogether.components.ComponentFactory.ComponentType;
+import javazoom.jl.decoder.JavaLayerException;
+import javazoom.jl.player.Player;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 /**
  * Created by samuel on 13/12/16.
@@ -19,6 +23,26 @@ public class SelectorShape extends JPanel {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        Player player = null;
+                        try {
+                            Thread.sleep(100);
+                            player = new Player(new FileInputStream("Assets/SoundFX/button.mp3"));
+                            player.play();
+                        } catch (InterruptedException ex) {
+                            if (player != null)
+                                player.close();
+
+                            Thread.currentThread().interrupt();
+                        } catch (FileNotFoundException | JavaLayerException e1) {
+                            e1.printStackTrace();
+                        }
+
+                    }
+                }.start();
+
                 switch (Brush.getInstance().getShape()) {
                     case RECTANGLE:
                         Brush.getInstance().setShape(ComponentType.CIRCLE);

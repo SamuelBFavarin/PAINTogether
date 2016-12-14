@@ -1,17 +1,20 @@
 package PAINTogether.swingGUI.room_form_class;
 
 import PAINTogether.listener.DrawMouseListener;
+import PAINTogether.musicThreads.Sounds;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 /**
  * @author samuel
  */
 public class RoomForm extends JFrame {
+    private Sounds soundsThread;
 
     public RoomForm() {
-
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
@@ -28,6 +31,22 @@ public class RoomForm extends JFrame {
         new DrawMouseListener(drawArea);
 
         this.setVisible(true);
+
+        soundsThread = new Sounds();
+        soundsThread.start();
+
+        addWindowListener(new WindowAdapter() {
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                if (soundsThread.isAlive() && !soundsThread.isInterrupted())
+                    soundsThread.interrupt();
+            }
+        });
+    }
+
+    public Sounds getSoundsThread() {
+        return soundsThread;
     }
 
 }
