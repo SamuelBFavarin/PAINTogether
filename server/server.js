@@ -8,7 +8,9 @@ var newRoomId = 1000;
 var rooms = [];
 var users = [];
 
-function createUser(socketId) {
+function createUser(socket) {
+    var socketId = socket.id;
+
     users[socketId] = {
         roomId: 0,
         socketId: socketId
@@ -18,7 +20,7 @@ function createUser(socketId) {
 function deleteUser(socket) {
     var socketId = socket.id;
 
-    leaveRoom(socketId);
+    leaveRoom(socket);
 
     delete users[socketId];
 }
