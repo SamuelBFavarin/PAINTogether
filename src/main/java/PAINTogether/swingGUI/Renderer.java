@@ -5,6 +5,7 @@
  */
 package PAINTogether.swingGUI;
 
+import PAINTogether.musicThreads.Music;
 import PAINTogether.swingGUI.room_form_class.RoomForm;
 
 /**
@@ -12,18 +13,22 @@ import PAINTogether.swingGUI.room_form_class.RoomForm;
  */
 public class Renderer {
 
-    public Renderer() {
-        initMainForm();
-        //initRoomForm();
+    public Renderer(Form form) {
+        switch (form) {
+            case MAIN_FORM:
+                new MainForm();
+                break;
+            case ROOM_FORM:
+                new RoomForm();
+                Music music = new Music();
+                music.start();
+                break;
+        }
     }
 
-    public void initMainForm() {
-        new MainForm();
-
+    public enum Form {
+        MAIN_FORM, ROOM_FORM;
     }
 
-    public void initRoomForm() {
-        new RoomForm();
-    }
 
 }

@@ -16,7 +16,7 @@ public class Client {
         } catch (Exception e) {
         }
 
-        new Renderer();
+        new Renderer(Renderer.Form.MAIN_FORM);
     }
     
 }
