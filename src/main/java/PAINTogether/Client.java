@@ -4,6 +4,7 @@ import PAINTogether.listener.ServerListener;
 import PAINTogether.utils.FormManager;
 
 import javax.swing.*;
+import java.util.Locale;
 
 /**
  *
@@ -16,6 +17,8 @@ public class Client {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
         }
+
+        Locale.setDefault(Locale.ENGLISH);
 
         FormManager.getInstance().openForm(FormManager.FormType.MAIN_FORM);
 
