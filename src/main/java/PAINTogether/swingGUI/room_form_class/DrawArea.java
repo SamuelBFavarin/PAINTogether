@@ -13,6 +13,12 @@ import java.awt.*;
 public class DrawArea extends JPanel {
 
     public DrawArea() {
+
+        this.setCursor(Toolkit.getDefaultToolkit().createCustomCursor(
+                new ImageIcon("Assets/Images/brushCursor.png").getImage(),
+                new Point(0, 0), "custom cursor"));
+
+
         this.setLayout(new BorderLayout());
         this.setBackground(Color.WHITE);
         this.setBorder(BorderFactory.createLineBorder(Color.darkGray));

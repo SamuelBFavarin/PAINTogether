@@ -1,6 +1,5 @@
 package PAINTogether;
 
-import PAINTogether.listener.ServerListener;
 import PAINTogether.utils.FormManager;
 
 import javax.swing.*;
@@ -22,7 +21,7 @@ public class Client {
 
         FormManager.getInstance().openForm(FormManager.FormType.MAIN_FORM);
 
-        new ServerListener();
+        //new ServerListener();
 
         //new Renderer(Renderer.Form.MAIN_FORM);
     }
