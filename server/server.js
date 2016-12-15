@@ -1,3 +1,4 @@
+'use strict';
 /**
  * Created by Lucas Baragatti on 12/12/2016.
  */
@@ -110,6 +111,7 @@ io.on('connection', function (socket) {
 
     socket.on('sv_send_data', function (data) {
         sendData(socket, data);
+        console.log(data);
     });
 
     socket.on('disconnect', function () {

@@ -2,8 +2,10 @@ package PAINTogether.dispatcher;
 
 import PAINTogether.components.Component;
 import PAINTogether.components.SocketManager;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author samuel
@@ -11,7 +13,7 @@ import java.util.ArrayList;
 public class ServerDispatcher {
     private static ServerDispatcher instance;
     private static int maxComponents = 50;
-    private ArrayList<Component> components = new ArrayList<>();
+    private List<Component> components = new ArrayList<>();
 
     public static ServerDispatcher getInstance() {
         if (instance == null)
@@ -36,6 +38,10 @@ public class ServerDispatcher {
             return;
 
         System.out.println("Disparando " + components.size() + " objetos");
+
+        String json = new Gson().toJson(components);
+        SocketManager.getInstance().emit("sv_send_data", json);
+
 
         components.clear();
     }

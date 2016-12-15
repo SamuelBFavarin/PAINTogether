@@ -19,6 +19,7 @@ public class ServerListener {
 
     public ServerListener() {
         SocketManager socketManager = SocketManager.getInstance();
+        
 
         socketManager.addEventListener(Socket.EVENT_CONNECT, new Emitter.Listener() {
             @Override
