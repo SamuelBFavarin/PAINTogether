@@ -76,7 +76,7 @@ public class MainForm extends JFrame {
         txt.setFont(new Font("Arial", Font.BOLD, 12));
         txt.setForeground(Color.DARK_GRAY);
 
-        JButton btnCreate = new JButton("Create Project");
+        JButton btnCreate = new JButton("Create Online Project");
         btnCreate.setSize(this.getWidth(), 50);
         createPanel.setLayout(null);
         createPanel.add(btnCreate);
@@ -112,7 +112,7 @@ public class MainForm extends JFrame {
                 FormManager.getInstance().openForm(FormManager.FormType.ROOM_FORM);
             }
         });
-
+        
         return offlinePanel;
     }
 

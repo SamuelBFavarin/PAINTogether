@@ -1,6 +1,7 @@
 package PAINTogether.interface_components;
 
 import PAINTogether.components.Brush;
+import PAINTogether.musicThreads.SoundFXThread;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +22,9 @@ public class ColorBox extends JPanel {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                SoundFXThread thread = new SoundFXThread();
+                thread.setSoundFile("color.mp3");
+                thread.start();
                 Brush.getInstance().setColor(color);
             }
         });
