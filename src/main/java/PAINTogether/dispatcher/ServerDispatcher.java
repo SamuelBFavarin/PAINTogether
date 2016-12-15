@@ -1,6 +1,7 @@
 package PAINTogether.dispatcher;
 
 import PAINTogether.components.Component;
+import PAINTogether.components.SocketManager;
 
 import java.util.ArrayList;
 
@@ -9,7 +10,7 @@ import java.util.ArrayList;
  */
 public class ServerDispatcher {
     private static ServerDispatcher instance;
-    private static int maxComponents = 30;
+    private static int maxComponents = 50;
     private ArrayList<Component> components = new ArrayList<>();
 
     public static ServerDispatcher getInstance() {
@@ -19,10 +20,14 @@ public class ServerDispatcher {
         return instance;
     }
 
+    public void joinRoom(int roomId) {
+        SocketManager.getInstance().emit("sv_join_room", roomId);
+    }
+
     public void addComponent(Component component) {
         components.add(component);
 
-        if (components.size() > maxComponents)
+        if (components.size() >= maxComponents)
             dispatch();
     }
 

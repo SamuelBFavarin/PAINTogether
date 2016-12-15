@@ -1,19 +1,21 @@
 package PAINTogether.swingGUI;
 
+import PAINTogether.dispatcher.ServerDispatcher;
 import PAINTogether.listener.SimpleMouseListener;
 import PAINTogether.utils.FormManager;
 import PAINTogether.utils.Settings;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.FocusAdapter;
+import java.awt.event.FocusEvent;
 import java.awt.event.MouseEvent;
 
 /**
- *
  * @author samuel
  */
 public class MainForm extends JFrame {
-   
+
     public MainForm() throws HeadlessException {
         //DEFINIÇOES DO FRAME
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -21,9 +23,9 @@ public class MainForm extends JFrame {
         this.setLocationRelativeTo(null);
         this.setMinimumSize(new Dimension(300, 350));
         this.setResizable(false);
-        
+
         this.setLayout(new BorderLayout());
-        this.add(initTopLayout(),BorderLayout.NORTH);
+        this.add(initTopLayout(), BorderLayout.NORTH);
         this.add(initCenterLayout(), BorderLayout.CENTER);
         this.setVisible(true);
     }
@@ -33,7 +35,7 @@ public class MainForm extends JFrame {
         JPanel topPanel = new JPanel();
         JLabel title = new JLabel("PAINTogether");
         title.setFont(new Font("Arial", Font.BOLD, 32));
-        title.setForeground (Color.WHITE);
+        title.setForeground(Color.WHITE);
         topPanel.add(title);
         topPanel.setBackground(Color.DARK_GRAY);
         return topPanel;
@@ -56,11 +58,29 @@ public class MainForm extends JFrame {
     private JPanel initEnterArea() {
         JPanel enterPanel = new JPanel();
 
-        JTextField txtField = new JTextField("Room Number");
-        txtField.setMaximumSize(new Dimension(this.getWidth() * 100, 20));
+        JTextField txtField = new JTextField();
+        txtField.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
+                txtField.setText(txtField.getText().replaceAll("[^0-9]", ""));
+            }
+        });
+        txtField.setPreferredSize(new Dimension(60, 20));
+        //txtField.setMaximumSize(new Dimension(this.getWidth() * 100, 20));
 
         JButton btnEnter = new JButton("ENTER");
         btnEnter.setMinimumSize(new Dimension(0, 0));
+
+        SimpleMouseListener btnEnterClick = new SimpleMouseListener(btnEnter);
+        btnEnterClick.setMousePressHandler(new SimpleMouseListener.MousePressEvent() {
+            @Override
+            public void onMousePress(MouseEvent e) {
+                txtField.setText(txtField.getText().replaceAll("[^0-9]", ""));
+                if (!txtField.getText().isEmpty())
+                    ServerDispatcher.getInstance().joinRoom(Integer.parseInt(txtField.getText()));
+            }
+        });
 
         enterPanel.add(txtField);
         enterPanel.add(btnEnter);
