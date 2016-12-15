@@ -1,8 +1,10 @@
 package PAINTogether;
 
+import PAINTogether.listener.ServerListener;
 import PAINTogether.utils.FormManager;
 
 import javax.swing.*;
+import java.util.Locale;
 
 /**
  *
@@ -16,7 +18,11 @@ public class Client {
         } catch (Exception e) {
         }
 
+        Locale.setDefault(Locale.ENGLISH);
+
         FormManager.getInstance().openForm(FormManager.FormType.MAIN_FORM);
+
+        new ServerListener();
 
         //new Renderer(Renderer.Form.MAIN_FORM);
     }

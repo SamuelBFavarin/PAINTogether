@@ -15,7 +15,7 @@ public class LeftBar extends JPanel {
     public LeftBar() {
         this.setLayout(new BorderLayout());
 
-        this.setMinimumSize(new Dimension(100, 1000));
+        this.setPreferredSize(new Dimension(42, this.getHeight()));
         this.setBackground(Color.DARK_GRAY);
         this.setBorder(BorderFactory.createLineBorder(Color.darkGray));
 
@@ -73,6 +73,5 @@ public class LeftBar extends JPanel {
         southPanel.setLayout(new GridLayout(0, 1));
         southPanel.add(new SliderSize());
         return southPanel;
-
     }
 }
