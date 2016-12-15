@@ -1,7 +1,7 @@
 package PAINTogether.swingGUI.room_form_class;
 
 import PAINTogether.listener.DrawMouseListener;
-import PAINTogether.musicThreads.Sounds;
+import PAINTogether.musicThreads.MusicThread;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +12,7 @@ import java.awt.event.WindowEvent;
  * @author samuel
  */
 public class RoomForm extends JFrame {
-    private Sounds soundsThread;
+    private MusicThread soundsThread;
 
     public RoomForm() {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,7 +32,7 @@ public class RoomForm extends JFrame {
 
         this.setVisible(true);
 
-        soundsThread = new Sounds();
+        soundsThread = new MusicThread();
         soundsThread.start();
 
         addWindowListener(new WindowAdapter() {
@@ -45,7 +45,7 @@ public class RoomForm extends JFrame {
         });
     }
 
-    public Sounds getSoundsThread() {
+    public MusicThread getSoundsThread() {
         return soundsThread;
     }
 

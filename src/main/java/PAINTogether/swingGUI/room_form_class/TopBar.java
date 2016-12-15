@@ -35,8 +35,12 @@ public class TopBar extends JPanel {
         btnClearListener.setMousePressHandler(new SimpleMouseListener.MousePressEvent() {
             @Override
             public void onMousePress(MouseEvent e) {
-                Drawer.getInstance().clear();
-                System.out.println("CLEAR");
+                String message = "Do you want to CLEAN this project?";
+                String title = "Alert Clear Project";
+                int confirmation = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+                if (confirmation == JOptionPane.YES_OPTION) {
+                    Drawer.getInstance().clear();
+                }
             }
         });
 
@@ -45,9 +49,12 @@ public class TopBar extends JPanel {
         btnCloseListener.setMousePressHandler(new SimpleMouseListener.MousePressEvent() {
             @Override
             public void onMousePress(MouseEvent e) {
-                System.out.println("FECHAR TELA");
-
-                FormManager.getInstance().closeCurrentForm();
+                String message = "Do you want to CLOSE this project?";
+                String title = "Alert Close Project";
+                int confirmation = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
+                if (confirmation == JOptionPane.YES_OPTION) {
+                    FormManager.getInstance().closeCurrentForm();
+                }
             }
         });
 
