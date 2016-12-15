@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 /**
  * Created by samuel on 14/12/16.
  */
-public class Sounds extends Thread {
+public class MusicThread extends Thread {
     private static String assetsPath = "Assets/";
     private Player musicPlayer;
     private BufferedInputStream musicStream;
@@ -43,12 +43,14 @@ public class Sounds extends Thread {
     private void playMusic() {
         if (musicStream == null)
             return;
-
         try {
             if (musicPlayer == null)
                 musicPlayer = new Player(musicStream);
 
             musicPlayer.play();
+            if (musicPlayer.isComplete()) {
+                musicPlayer.play();
+            }
         } catch (JavaLayerException e) {
             e.printStackTrace();
         }
