@@ -19,7 +19,7 @@ public class ComponentFactory {
     }
 
     public enum ComponentType {
-        RECTANGLE, CIRCLE
+        RECTANGLE, CIRCLE;
     }
 
 }

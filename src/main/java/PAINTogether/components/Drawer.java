@@ -3,6 +3,7 @@ package PAINTogether.components;
 import PAINTogether.dispatcher.ServerDispatcher;
 import PAINTogether.utils.Settings;
 
+import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -11,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Drawer {
     private static Drawer instance;
+    private JComponent drawArea;
     private ArrayList<Component> components = new ArrayList<>();
 
     public static Drawer getInstance() {
@@ -18,6 +20,14 @@ public class Drawer {
             instance = new Drawer();
 
         return instance;
+    }
+
+    public void setDrawArea(JComponent drawArea) {
+        this.drawArea = drawArea;
+    }
+
+    public void addComponent(Component c) {
+        components.add(c);
     }
 
     public void drawBrush(int x, int y, boolean erase) {
@@ -37,13 +47,23 @@ public class Drawer {
     }
 
     public void draw(Graphics g) {
-        for (int i = 0; i < components.size(); i++) {
-            components.get(i).draw(g);
-        }
+        for (Component component : components)
+            component.draw(g);
+    }
+
+    public void repaint() {
+        if (drawArea != null)
+            drawArea.repaint();
     }
 
     public void clear() {
         components.clear();
+
+        if (drawArea != null)
+            drawArea.repaint();
+
+        if (Settings.getInstance().isOnline())
+            ServerDispatcher.getInstance().clearComponents();
     }
 
 }

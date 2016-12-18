@@ -1,8 +1,12 @@
 package PAINTogether.swingGUI;
 
+import PAINTogether.components.Drawer;
 import PAINTogether.dispatcher.ServerDispatcher;
 import PAINTogether.listener.SimpleMouseListener;
+import PAINTogether.shared.ComponentWrapper;
+import PAINTogether.shared.ServerCallback;
 import PAINTogether.utils.FormManager;
+import PAINTogether.utils.Serializer;
 import PAINTogether.utils.Settings;
 
 import javax.swing.*;
@@ -10,6 +14,7 @@ import java.awt.*;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 /**
  * @author samuel
@@ -77,8 +82,36 @@ public class MainForm extends JFrame {
             @Override
             public void onMousePress(MouseEvent e) {
                 txtField.setText(txtField.getText().replaceAll("[^0-9]", ""));
-                if (!txtField.getText().isEmpty())
-                    ServerDispatcher.getInstance().joinRoom(Integer.parseInt(txtField.getText()));
+                if (!txtField.getText().isEmpty()) {
+                    final int roomId = Integer.parseInt(txtField.getText());
+                    ServerDispatcher.getInstance().joinRoom(Integer.parseInt(txtField.getText()), new ServerCallback() {
+                        @Override
+                        public void onError(Object response) {
+                            JOptionPane.showMessageDialog(null, "ERRO: " + String.valueOf(response));
+                        }
+
+                        @Override
+                        public void onSuccess(Object response) {
+                            Settings.getInstance().setOnline(true);
+                            Settings.getInstance().setRoomId(roomId);
+                            FormManager.getInstance().openForm(FormManager.FormType.ROOM_FORM);
+
+                            String responseText = String.valueOf(response);
+                            if (!responseText.equals("[]")) {
+                                ComponentWrapper[] componentWrappers = Serializer.fromJson(responseText, ComponentWrapper[].class);
+
+                                if (componentWrappers.length > 0) {
+                                    ArrayList<PAINTogether.components.Component> componentList = Serializer.unwrapComponents(componentWrappers);
+
+                                    for (PAINTogether.components.Component c : componentList)
+                                        Drawer.getInstance().addComponent(c);
+
+                                    Drawer.getInstance().repaint();
+                                }
+                            }
+                        }
+                    });
+                }
             }
         });
 
@@ -106,8 +139,19 @@ public class MainForm extends JFrame {
         mouseListener.setMousePressHandler(new SimpleMouseListener.MousePressEvent() {
             @Override
             public void onMousePress(MouseEvent e) {
-                Settings.getInstance().setOnline(true);
-                FormManager.getInstance().openForm(FormManager.FormType.ROOM_FORM);
+                ServerDispatcher.getInstance().createRoom(new ServerCallback() {
+                    @Override
+                    public void onError(Object response) {
+                        JOptionPane.showMessageDialog(null, "ERRO: " + String.valueOf(response));
+                    }
+
+                    @Override
+                    public void onSuccess(Object response) {
+                        Settings.getInstance().setOnline(true);
+                        Settings.getInstance().setRoomId(Integer.parseInt(String.valueOf(response)));
+                        FormManager.getInstance().openForm(FormManager.FormType.ROOM_FORM);
+                    }
+                });
             }
         });
 
@@ -132,9 +176,8 @@ public class MainForm extends JFrame {
                 FormManager.getInstance().openForm(FormManager.FormType.ROOM_FORM);
             }
         });
-        
+
         return offlinePanel;
     }
-
 
 }

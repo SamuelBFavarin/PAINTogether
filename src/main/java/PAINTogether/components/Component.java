@@ -2,6 +2,8 @@ package PAINTogether.components;
 
 import java.awt.*;
 
+import static PAINTogether.components.ComponentFactory.ComponentType;
+
 /**
  * Created by samuel on 09/12/16.
  */
@@ -11,13 +13,15 @@ public abstract class Component {
     private int width;
     private int height;
     private Color color;
+    private ComponentType type;
 
-    public Component(int x, int y, int width, int height, Color color) {
+    public Component(ComponentType type, int x, int y, int width, int height, Color color) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.color = color;
+        this.type = type;
     }
 
     public Color getColor() {
@@ -62,4 +66,7 @@ public abstract class Component {
 
     abstract void draw(Graphics g);
 
+    public ComponentType getType() {
+        return type;
+    }
 }

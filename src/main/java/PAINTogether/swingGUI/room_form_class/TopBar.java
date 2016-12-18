@@ -1,6 +1,8 @@
 package PAINTogether.swingGUI.room_form_class;
 
 import PAINTogether.components.Drawer;
+import PAINTogether.components.SocketManager;
+import PAINTogether.dispatcher.ServerDispatcher;
 import PAINTogether.listener.SimpleMouseListener;
 import PAINTogether.utils.FormManager;
 import PAINTogether.utils.Settings;
@@ -40,6 +42,9 @@ public class TopBar extends JPanel {
                 int confirmation = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
                 if (confirmation == JOptionPane.YES_OPTION) {
                     Drawer.getInstance().clear();
+
+                    if (Settings.getInstance().isOnline())
+                        ServerDispatcher.getInstance().clearRoom();
                 }
             }
         });
@@ -54,6 +59,7 @@ public class TopBar extends JPanel {
                 int confirmation = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
                 if (confirmation == JOptionPane.YES_OPTION) {
                     FormManager.getInstance().closeCurrentForm();
+                    SocketManager.getInstance().disconnect();
                 }
             }
         });

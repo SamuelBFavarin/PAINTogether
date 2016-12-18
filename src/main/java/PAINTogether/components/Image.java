@@ -10,7 +10,7 @@ public class Image extends Component {
     private Rectangle rectangle;
 
     public Image(int x, int y, int width, int height, Color color) {
-        super(x, y, width, height, color);
+        super(null, x, y, width, height, color);
     }
 
     public String getFilename() {

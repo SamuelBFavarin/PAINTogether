@@ -1,6 +1,6 @@
 package PAINTogether;
 
-import PAINTogether.listener.ServerListener;
+import PAINTogether.components.SocketManager;
 import PAINTogether.utils.FormManager;
 
 import javax.swing.*;
@@ -20,11 +20,9 @@ public class Client {
 
         Locale.setDefault(Locale.ENGLISH);
 
+        SocketManager.getInstance().connect();
+
         FormManager.getInstance().openForm(FormManager.FormType.MAIN_FORM);
-
-        new ServerListener();
-
-        //new Renderer(Renderer.Form.MAIN_FORM);
     }
     
 }

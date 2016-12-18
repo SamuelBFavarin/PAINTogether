@@ -2,7 +2,8 @@ package PAINTogether.dispatcher;
 
 import PAINTogether.components.Component;
 import PAINTogether.components.SocketManager;
-import com.google.gson.Gson;
+import PAINTogether.shared.ServerCallback;
+import PAINTogether.utils.Serializer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,8 +23,12 @@ public class ServerDispatcher {
         return instance;
     }
 
-    public void joinRoom(int roomId) {
-        SocketManager.getInstance().emit("sv_join_room", roomId);
+    public void joinRoom(int roomId, ServerCallback callback) {
+        SocketManager.getInstance().emit("sv_join_room", roomId, callback);
+    }
+
+    public void createRoom(ServerCallback callback) {
+        SocketManager.getInstance().emit("sv_create_room", null, callback);
     }
 
     public void addComponent(Component component) {
@@ -37,13 +42,17 @@ public class ServerDispatcher {
         if (components.size() == 0)
             return;
 
-        System.out.println("Disparando " + components.size() + " objetos");
-
-        String json = new Gson().toJson(components);
-        SocketManager.getInstance().emit("sv_send_data", json);
-
+        SocketManager.getInstance().emit("sv_send_data", Serializer.toJson(Serializer.wrapComponents(components)));
 
         components.clear();
+    }
+
+    public void clearComponents() {
+        components.clear();
+    }
+
+    public void clearRoom() {
+        SocketManager.getInstance().emit("sv_clear_room", null);
     }
 
 }
