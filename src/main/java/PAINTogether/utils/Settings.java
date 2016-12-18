@@ -18,20 +18,13 @@ public class Settings {
         return instance;
     }
 
-    public void setRoomId(int roomId) {
-        System.out.println("Entrando na sala " + roomId);
-        this.roomId = roomId;
-
-        //TODO fazer o numero da sala setada aqui atualizar o numero da TopBar
+    public int getRoomId() {
+        return roomId;
     }
 
     public void setRoomId(int roomId) {
         System.out.println("Entrando na sala " + roomId);
         this.roomId = roomId;
-
-        //TODO fazer o numero da sala setada aqui atualizar o numero da TopBar
-    }    public int getRoomId() {
-        return roomId;
     }
 
     public boolean isOnline() {

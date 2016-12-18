@@ -86,17 +86,17 @@ public class MainForm extends JFrame {
                     final int roomId = Integer.parseInt(txtField.getText());
                     ServerDispatcher.getInstance().joinRoom(Integer.parseInt(txtField.getText()), new ServerCallback() {
                         @Override
-                        public void onError(Object response) {
-                            JOptionPane.showMessageDialog(null, "ERRO: " + String.valueOf(response));
+                        public void onError(Object... response) {
+                            JOptionPane.showMessageDialog(null, "ERRO: " + String.valueOf(response[0]));
                         }
 
                         @Override
-                        public void onSuccess(Object response) {
+                        public void onSuccess(Object... response) {
                             Settings.getInstance().setOnline(true);
                             Settings.getInstance().setRoomId(roomId);
                             FormManager.getInstance().openForm(FormManager.FormType.ROOM_FORM);
 
-                            String responseText = String.valueOf(response);
+                            String responseText = String.valueOf(response[0]);
                             if (!responseText.equals("[]")) {
                                 ComponentWrapper[] componentWrappers = Serializer.fromJson(responseText, ComponentWrapper[].class);
 
@@ -109,6 +109,8 @@ public class MainForm extends JFrame {
                                     Drawer.getInstance().repaint();
                                 }
                             }
+
+                            Drawer.getInstance().getTopBar().getUserCountLabel().setText(String.valueOf(response[1]));
                         }
                     });
                 }
@@ -141,14 +143,14 @@ public class MainForm extends JFrame {
             public void onMousePress(MouseEvent e) {
                 ServerDispatcher.getInstance().createRoom(new ServerCallback() {
                     @Override
-                    public void onError(Object response) {
-                        JOptionPane.showMessageDialog(null, "ERRO: " + String.valueOf(response));
+                    public void onError(Object... response) {
+                        JOptionPane.showMessageDialog(null, "ERRO: " + String.valueOf(response[0]));
                     }
 
                     @Override
-                    public void onSuccess(Object response) {
+                    public void onSuccess(Object... response) {
                         Settings.getInstance().setOnline(true);
-                        Settings.getInstance().setRoomId(Integer.parseInt(String.valueOf(response)));
+                        Settings.getInstance().setRoomId(Integer.parseInt(String.valueOf(response[0])));
                         FormManager.getInstance().openForm(FormManager.FormType.ROOM_FORM);
                     }
                 });

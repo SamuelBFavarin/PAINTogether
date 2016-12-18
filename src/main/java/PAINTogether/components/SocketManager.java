@@ -55,10 +55,14 @@ public class SocketManager {
             @Override
             public void call(Object... objects) {
                 if (objects.length > 1) {
+                    Object[] newObjects = new Object[objects.length - 1];
+                    for (int i = 0; i < (objects.length - 1); i++)
+                        newObjects[i] = objects[i + 1];
+
                     if (objects[0].equals("1"))
-                        callback.onSuccess(objects[1]);
+                        callback.onSuccess(newObjects);
                     else
-                        callback.onError(objects[1]);
+                        callback.onError(newObjects);
                 }
             }
         });

@@ -48,21 +48,19 @@ function joinRoom(socket, roomId, fn) {
         if (users[socketId].roomId == 0) {
             console.log(socketId + " Joining room " + roomId);
 
-            for (let i = 0; i < rooms["#" + roomId].users.length; i++) {
-                let userSocketId = rooms["#" + roomId].users[i];
-                if (userSocketId != socketId) {
-                    socket.broadcast.to(userSocketId).emit("cl_user_count", rooms["#" + roomId].users.length);
-                }
-            }
-
             users[socketId].roomId = roomId;
             rooms["#" + roomId].users.push(socketId);
 
+            var usersCount = rooms["#" + roomId].users.length;
+            for (let i = 0; i < usersCount; i++) {
+                let userSocketId = rooms["#" + roomId].users[i];
+                socket.broadcast.to(userSocketId).emit("cl_user_count", usersCount);
+            }
 
             if (roomsDraw["#" + roomId].length > 0)
-                fn("1", "[" + roomsDraw["#" + roomId] + "]");
+                fn("1", "[" + roomsDraw["#" + roomId] + "]", usersCount);
             else
-                fn("1", "[]");
+                fn("1", "[]", usersCount);
         }
     }
     else {
@@ -91,6 +89,8 @@ function leaveRoom(socket) {
                 socket.broadcast.to(userSocketId).emit("cl_user_count", rooms["#" + roomId].users.length);
             }
         }
+
+        users[socketId].roomId = 0;
 
         if (rooms["#" + roomId].users.length == 0)
             deleteRoom(roomId);
@@ -144,6 +144,9 @@ io.on('connection', function (socket) {
 
     socket.on('sv_clear_room', function () {
         clearRoom(socket);
+    });
+    socket.on('sv_leave_room', function () {
+        leaveRoom(socket);
     });
 
     socket.on('sv_send_data', function (data) {

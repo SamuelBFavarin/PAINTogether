@@ -1,7 +1,6 @@
 package PAINTogether.swingGUI.room_form_class;
 
 import PAINTogether.components.Drawer;
-import PAINTogether.components.SocketManager;
 import PAINTogether.dispatcher.ServerDispatcher;
 import PAINTogether.listener.SimpleMouseListener;
 import PAINTogether.utils.FormManager;
@@ -15,12 +14,14 @@ import java.awt.event.MouseEvent;
  * Created by samuel on 08/12/16.
  */
 public class TopBar extends JPanel {
-
+    private JLabel roomNumberLabel;
+    private JLabel userCountLabel;
 
     public TopBar() {
-
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new BorderLayout());
+
+        Drawer.getInstance().setTopBar(this);
 
         JPanel btnPanel = new JPanel();
         btnPanel.setLayout(new BoxLayout(btnPanel, 2));
@@ -59,7 +60,7 @@ public class TopBar extends JPanel {
                 int confirmation = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
                 if (confirmation == JOptionPane.YES_OPTION) {
                     FormManager.getInstance().closeCurrentForm();
-                    SocketManager.getInstance().disconnect();
+                    ServerDispatcher.getInstance().leaveRoom();
                 }
             }
         });
@@ -78,20 +79,20 @@ public class TopBar extends JPanel {
         JPanel txtPanel = new JPanel();
         txtPanel.setBackground(Color.DARK_GRAY);
 
-        JLabel txtRoom = new JLabel("Number Room: ");
-        JLabel txtNum = new JLabel("445846");
+        JLabel txtRoom = new JLabel("Room Number: ");
+        roomNumberLabel = new JLabel(String.valueOf(Settings.getInstance().getRoomId()));
         JLabel txtUsers = new JLabel("    Users Online: ");
-        JLabel txtNumUsers = new JLabel("3");
+        userCountLabel = new JLabel("1");
 
         txtRoom.setForeground(Color.white);
-        txtNum.setForeground(Color.cyan);
+        roomNumberLabel.setForeground(Color.cyan);
         txtUsers.setForeground(Color.white);
-        txtNumUsers.setForeground(Color.green);
+        userCountLabel.setForeground(Color.green);
 
         txtPanel.add(txtRoom);
-        txtPanel.add(txtNum);
+        txtPanel.add(roomNumberLabel);
         txtPanel.add(txtUsers);
-        txtPanel.add(txtNumUsers);
+        txtPanel.add(userCountLabel);
 
         return txtPanel;
     }
@@ -108,5 +109,12 @@ public class TopBar extends JPanel {
         return txtPanel;
     }
 
+    public JLabel getRoomNumberLabel() {
+        return roomNumberLabel;
+    }
+
+    public JLabel getUserCountLabel() {
+        return userCountLabel;
+    }
 
 }

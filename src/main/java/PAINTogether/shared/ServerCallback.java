@@ -5,8 +5,8 @@ package PAINTogether.shared;
  */
 public interface ServerCallback {
 
-    void onError(Object response);
+    void onError(Object... response);
 
-    void onSuccess(Object response);
+    void onSuccess(Object... response);
 
 }

@@ -55,9 +55,7 @@ public class ServerListener {
         socketManager.addEventListener("cl_user_count", new Emitter.Listener() {
             @Override
             public void call(Object... objects) {
-                int userCount = Integer.parseInt(String.valueOf(objects[0]));
-                //TODO implementar atualizacao do numero de usuarios la na topbar
-                //TODO a variavel userCount eh atualizada com o numero de usuarios na sala
+                Drawer.getInstance().getTopBar().getUserCountLabel().setText(String.valueOf(objects[0]));
             }
         });
     }

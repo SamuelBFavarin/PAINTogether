@@ -31,6 +31,10 @@ public class ServerDispatcher {
         SocketManager.getInstance().emit("sv_create_room", null, callback);
     }
 
+    public void leaveRoom() {
+        SocketManager.getInstance().emit("sv_leave_room", null);
+    }
+
     public void addComponent(Component component) {
         components.add(component);
 

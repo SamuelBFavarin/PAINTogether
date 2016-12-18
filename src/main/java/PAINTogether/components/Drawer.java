@@ -1,9 +1,10 @@
 package PAINTogether.components;
 
 import PAINTogether.dispatcher.ServerDispatcher;
+import PAINTogether.swingGUI.room_form_class.DrawArea;
+import PAINTogether.swingGUI.room_form_class.TopBar;
 import PAINTogether.utils.Settings;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
@@ -12,7 +13,8 @@ import java.util.ArrayList;
  */
 public class Drawer {
     private static Drawer instance;
-    private JComponent drawArea;
+    private DrawArea drawArea;
+    private TopBar topBar;
     private ArrayList<Component> components = new ArrayList<>();
 
     public static Drawer getInstance() {
@@ -22,7 +24,7 @@ public class Drawer {
         return instance;
     }
 
-    public void setDrawArea(JComponent drawArea) {
+    public void setDrawArea(DrawArea drawArea) {
         this.drawArea = drawArea;
     }
 
@@ -66,4 +68,11 @@ public class Drawer {
             ServerDispatcher.getInstance().clearComponents();
     }
 
+    public TopBar getTopBar() {
+        return topBar;
+    }
+
+    public void setTopBar(TopBar topBar) {
+        this.topBar = topBar;
+    }
 }
