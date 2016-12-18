@@ -59,8 +59,9 @@ public class TopBar extends JPanel {
                 String title = "Alert Close Project";
                 int confirmation = JOptionPane.showConfirmDialog(null, message, title, JOptionPane.YES_NO_OPTION);
                 if (confirmation == JOptionPane.YES_OPTION) {
-                    FormManager.getInstance().closeCurrentForm();
+                    Drawer.getInstance().clear();
                     ServerDispatcher.getInstance().leaveRoom();
+                    FormManager.getInstance().closeCurrentForm();
                 }
             }
         });
