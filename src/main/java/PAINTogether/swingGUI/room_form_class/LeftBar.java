@@ -26,7 +26,7 @@ public class LeftBar extends JPanel {
 
     private JPanel initColorBoxes() {
         JPanel colorsPanel = new JPanel();
-        colorsPanel.setLayout(new GridLayout(4, 0));
+        colorsPanel.setLayout(new GridLayout(6, 0));
 
         JPanel boxRed = new ColorBox(Color.RED);
         JPanel boxBlue = new ColorBox(Color.BLUE);
@@ -40,6 +40,12 @@ public class LeftBar extends JPanel {
         JPanel boxWhite = new ColorBox(Color.WHITE);
         JPanel boxLightGray = new ColorBox(Color.lightGray);
         JPanel boxGray = new ColorBox(Color.GRAY);
+        JPanel boxBrown = new ColorBox(new Color(41, 0, 0));
+        JPanel boxViollet = new ColorBox(new Color(191, 0, 255));
+        JPanel boxStrongOrange = new ColorBox(new Color(255, 64, 0));
+        JPanel boxStrongGreen = new ColorBox((new Color(0, 128, 0)));
+        JPanel boxOceanBlue = new ColorBox(new Color(0, 21, 77));
+        JPanel boxGoldMetalic = new ColorBox(new Color(173, 173, 133));
 
         colorsPanel.add(boxRed);
         colorsPanel.add(boxBlue);
@@ -50,6 +56,12 @@ public class LeftBar extends JPanel {
         colorsPanel.add(boxPink);
         colorsPanel.add(boxMagenta);
         colorsPanel.add(boxWhite);
+        colorsPanel.add(boxBrown);
+        colorsPanel.add(boxViollet);
+        colorsPanel.add(boxStrongOrange);
+        colorsPanel.add(boxStrongGreen);
+        colorsPanel.add(boxOceanBlue);
+        colorsPanel.add(boxGoldMetalic);
         colorsPanel.add(boxLightGray);
         colorsPanel.add(boxGray);
         colorsPanel.add(boxBlack);
