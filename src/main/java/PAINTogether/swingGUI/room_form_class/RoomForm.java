@@ -28,7 +28,12 @@ public class RoomForm extends JFrame {
         this.add(new LeftBar(), BorderLayout.WEST);
         this.add(drawArea, BorderLayout.CENTER);
 
-        new DrawMouseListener(drawArea);
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new DrawMouseListener(drawArea);
+            }
+        });
 
         this.setVisible(true);
 

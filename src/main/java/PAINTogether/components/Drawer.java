@@ -49,8 +49,12 @@ public class Drawer {
     }
 
     public void draw(Graphics g) {
-        for (Component component : components)
-            component.draw(g);
+        for (int i = 0; i < components.size(); i++) {
+            Component c = components.get(i);
+
+            if (c != null)
+                c.draw(g);
+        }
     }
 
     public void repaint() {
