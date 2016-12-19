@@ -18,7 +18,7 @@ public class RoomForm extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
-        this.setMinimumSize(new Dimension(500, 700));
+        this.setMinimumSize(new Dimension(800, 600));
         this.setLayout(new BorderLayout());
 
         DrawArea drawArea = new DrawArea();
